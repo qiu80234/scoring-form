@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>班长的战争 - 300分评估表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.5}
+.wrap{max-width:640px;margin:0 auto;padding:12px}
+.header{background:linear-gradient(135deg,#2d6a4f,#40916c);border-radius:14px;padding:28px 20px;text-align:center;color:#fff;margin-bottom:16px}
+.header h1{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.header .sub{font-size:.88rem;opacity:.85;margin-bottom:10px}
+.header .desc{font-size:.78rem;opacity:.7}
+.section{margin-bottom:14px}
+.sec-head{border-radius:10px;padding:14px 16px;margin-bottom:8px;color:#fff;font-weight:600;font-size:1rem}
+.s1{background:linear-gradient(135deg,#2d6a4f,#52b788)}
+.s2{background:linear-gradient(135deg,#1d3557,#457b9d)}
+.s3{background:linear-gradient(135deg,#9c4221,#e76f51)}
+.sec-desc{font-size:.76rem;opacity:.8;font-weight:400;margin-top:4px;font-style:italic}
+.sub-label{font-size:.82rem;font-weight:600;color:#555;padding:8px 14px;border-left:3px solid #40916c;margin:6px 0 4px;background:#e8f5e9;border-radius:0 6px 6px 0}
+.card{background:#fff;border-radius:10px;padding:0;margin-bottom:6px;border:1px solid #e0e0e0;overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:#40916c}
+.card label{display:flex;align-items:center;padding:12px 14px;cursor:pointer;gap:12px;user-select:none}
+.card input[type=checkbox]{width:22px;height:22px;accent-color:#2d6a4f;cursor:pointer;flex-shrink:0}
+.card .info{flex:1;min-width:0}
+.card .title{font-size:.88rem;font-weight:500;color:#1a1a2e}
+.card .detail{font-size:.75rem;color:#777;margin-top:2px}
+.card .pts{font-size:.82rem;font-weight:700;color:#2d6a4f;background:#e8f5e9;padding:4px 10px;border-radius:16px;white-space:nowrap;flex-shrink:0}
+.card.checked{background:#f0fdf4;border-color:#40916c}
+.info-sec{background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;border:1px solid #e0e0e0}
+.info-sec h3{font-size:.92rem;font-weight:600;margin-bottom:10px;color:#333}
+.info-sec input,.info-sec textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fafafa}
+.info-sec input:focus,.info-sec textarea:focus{outline:none;border-color:#40916c;background:#fff}
+.info-sec .field{margin-bottom:10px}
+.info-sec .field-label{font-size:.82rem;color:#555;margin-bottom:4px;font-weight:500}
+.preview{background:#fff;border-radius:10px;padding:16px;margin:14px 0;border:1px solid #e0e0e0}
+.preview h3{font-size:.92rem;font-weight:600;margin-bottom:10px}
+.prow{display:flex;justify-content:space-between;padding:6px 10px;font-size:.85rem;border-radius:6px;margin-bottom:4px;background:#fafafa}
+.ptotal{background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;font-weight:700;font-size:1rem;padding:10px;border-radius:8px;margin-top:6px}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:8px}
+.submit-btn:hover{opacity:.9}
+.submit-btn:active{transform:scale(.98)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.note{text-align:center;font-size:.75rem;color:#999;margin-top:8px;padding-bottom:20px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.scard{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;max-width:360px;width:100%;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.scard .icon{font-size:3rem;margin-bottom:12px}
+.scard h2{color:#2d6a4f;margin-bottom:6px}
+.scard p{color:#777;font-size:.88rem;margin-bottom:12px}
+.scard .score{font-size:2rem;font-weight:700;color:#2d6a4f;margin-bottom:4px}
+.scard .grade{font-size:.9rem;padding:4px 16px;border-radius:16px;display:inline-block;margin-bottom:16px}
+.g-s{background:#dcfce7;color:#166534}.g-a{background:#dbeafe;color:#1e40af}
+.g-b{background:#fef3c7;color:#92400e}.g-c{background:#fed7aa;color:#9a3412}.g-d{background:#fecaca;color:#991b1b}
+.close-btn{padding:10px 28px;background:#e0e0e0;border:none;border-radius:8px;font-size:.9rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+<h1>🌾 第二农业季度<br>"班长的战争" 评估表</h1>
+<div class="sub">300分总打分表（建议版）</div>
+<div class="desc">请勾选您认为该班组达标的项目<br>✅ 勾选 = 给满分 ｜ ⬜ 不勾选 = 0分</div>
+</div>
+
+<div class="info-sec">
+<h3>👤 基本信息</h3>
+<div class="field"><div class="field-label">您的姓名 *</div><input type="text" id="voterName" placeholder="请输入姓名" required></div>
+</div>
+
+<div id="formBody"></div>
+
+<div class="info-sec">
+<h3>💬 补充意见（选填）</h3>
+<textarea id="comments" rows="3" placeholder="请输入您的意见或建议..."></textarea>
+</div>
+
+<div class="preview">
+<h3>📊 实时得分</h3>
+<div class="prow"><span>🌱 农业目标</span><span id="m1">0 / 100</span></div>
+<div class="prow"><span>👥 团队建设</span><span id="m2">0 / 100</span></div>
+<div class="prow"><span>🚀 技术突破</span><span id="m3">0 / 100</span></div>
+<div class="ptotal"><span>总分：<span id="gt">0</span> / 300</span></div>
+</div>
+
+<button class="submit-btn" id="submitBtn" onclick="handleSubmit()">📤 提交评估</button>
+<p class="note">提交后数据将保存至 Google 表格，不可修改</p>
+</div>
+
+<div class="overlay" id="overlay">
+<div class="scard">
+<div class="icon">✅</div>
+<h2>提交成功！</h2>
+<p>感谢您的评估，结果已保存至表格。</p>
+<div class="score" id="finalScore"></div>
+<div class="grade" id="finalGrade"></div>
+<br><button class="close-btn" onclick="location.reload()">关闭</button>
+</div>
+</div>
+
+<script>
+var Q=[
+// [id, module(1-3), subGroup, name, desc, maxScore]
+["q1",1,"土地管理","道路与排水","雨季通行、排水畅通",10],
+["q2",1,"土地管理","地块整洁","杂草、杂木管理",5],
+["q3",1,"土地管理","土肥水管理","土壤、施肥、灌溉",10],
+["q4",1,"土地管理","巡查覆盖率","是否真正下地",5],
+["q5",1,"树健康","叶片状态","叶色、病斑、长势",10],
+["q6",1,"树健康","树势","生长与树冠状态",10],
+["q7",1,"树健康","病虫害控制","防治与跟踪",10],
+["q8",1,"树健康","弱树恢复","弱树管理与恢复",5],
+["q9",1,"果与采收","成熟果采收率","是否及时采收",15],
+["q10",1,"果与采收","掉果率","是否长期掉果",5],
+["q11",1,"果与采收","入厂及时率","是否快速入厂",10],
+["q12",1,"果与采收","高峰抢收能力","雨季与高峰组织",5],
+["q13",2,"组织架构","AB角体系","是否形成替补机制",10],
+["q14",2,"组织架构","三班体系","人力班/机械班/AI班协同",15],
+["q15",2,"人员梯度","班长培养","后备干部建设",10],
+["q16",2,"人员梯度","新人培养","上手速度与带教",5],
+["q17",2,"人员梯度","老员工稳定率","人员流失控制",5],
+["q18",2,"人员梯度","技术传承","是否形成经验复制",5],
+["q19",2,"出勤与纪律","出勤率","日常与高峰出勤",10],
+["q20",2,"出勤与纪律","高峰到岗率","是否关键掉链",5],
+["q21",2,"出勤与纪律","现场纪律","现场管理与规范",5],
+["q22",2,"出勤与纪律","安全管理","安全意识与违规情况",5],
+["q23",2,"班组作战能力","高峰抢收能力","高峰组织能力",10],
+["q24",2,"班组作战能力","雨季连续作战","是否断线",5],
+["q25",2,"班组作战能力","问题处理速度","是否快速响应",5],
+["q26",2,"班组作战能力","跨班协同","是否互相支援",5],
+["q27",3,"技术突破案例","新农业方法","创新种植方式",10],
+["q28",3,"技术突破案例","成本下降案例","降本增效",10],
+["q29",3,"技术突破案例","产量提升案例","单产突破",10],
+["q30",3,"技术突破案例","恢复区成功案例","修复与提升",5],
+["q31",3,"机械化","机械覆盖率","使用程度",10],
+["q32",3,"机械化","自动量方","数字采收",5],
+["q33",3,"机械化","运输机械效率","周转效率",10],
+["q34",3,"机械化","故障下降率","设备稳定性",5],
+["q35",3,"大数据建设","数据上传率","实时数据",5],
+["q36",3,"大数据建设","地块数据完整度","连续记录",5],
+["q37",3,"大数据建设","农业分析能力","数据分析应用",5],
+["q38",3,"大数据建设","数据真实性","是否可靠",5],
+["q39",3,"AI与智能化","AI巡查","AI落地应用",5],
+["q40",3,"AI与智能化","无人机应用","巡检与监控",5],
+["q41",3,"AI与智能化","AI预警","提前发现问题",5]
+];
+
+var modNames={1:"农业目标",2:"团队建设",3:"技术突破"};
+var modClass={1:"s1",2:"s2",3:"s3"};
+var modIcons={1:"🌱",2:"👥",3:"🚀"};
+var modDescs={1:'"地有没有管好，树是不是健康，果是不是收回来。"',2:'"有没有形成真正能持续作战的组织。"',3:'"农业是否开始升级。"'};
+var subIcons={"土地管理":"📍","树健康":"🌳","果与采收":"🍊","组织架构":"🏗️","人员梯度":"📈","出勤与纪律":"📋","班组作战能力":"⚔️","技术突破案例":"💡","机械化":"⚙️","大数据建设":"📊","AI与智能化":"🤖"};
+
+function buildForm(){
+  var body=document.getElementById('formBody');
+  var html='';var curMod=0;var curSub='';var num=0;
+  Q.forEach(function(q){
+    if(q[1]!==curMod){
+      if(curMod)html+='</div>';
+      curMod=q[1];curSub='';
+      html+='<div class="section"><div class="sec-head '+modClass[curMod]+'">'+modIcons[curMod]+' '+
+        (curMod===1?'一':curMod===2?'二':'三')+'、'+modNames[curMod]+'（100分）'+
+        '<div class="sec-desc">核心：'+modDescs[curMod]+'</div></div>';
+    }
+    if(q[2]!==curSub){
+      curSub=q[2];
+      var subTotal=Q.filter(function(x){return x[2]===curSub}).reduce(function(a,b){return a+b[5]},0);
+      html+='<div class="sub-label">'+(subIcons[curSub]||'')+ ' '+curSub+'（'+subTotal+'分）</div>';
+    }
+    num++;
+    html+='<div class="card" id="card_'+q[0]+'"><label>'+
+      '<input type="checkbox" id="'+q[0]+'" onchange="onCheck(this)">'+
+      '<div class="info"><div class="title">'+num+'. '+q[3]+'</div><div class="detail">'+q[4]+'</div></div>'+
+      '<div class="pts">'+q[5]+'分</div></label></div>';
+  });
+  html+='</div>';
+  body.innerHTML=html;
+}
+
+function onCheck(cb){
+  var card=document.getElementById('card_'+cb.id);
+  card.className=cb.checked?'card checked':'card';
+  updateScore();
+}
+
+function updateScore(){
+  var m=[0,0,0];
+  Q.forEach(function(q){
+    if(document.getElementById(q[0]).checked)m[q[1]-1]+=q[5];
+  });
+  document.getElementById('m1').textContent=m[0]+' / 100';
+  document.getElementById('m2').textContent=m[1]+' / 100';
+  document.getElementById('m3').textContent=m[2]+' / 100';
+  document.getElementById('gt').textContent=m[0]+m[1]+m[2];
+}
+
+// ⚠️ 部署后请将下面的URL替换为你的 Apps Script 部署链接
+var API_URL = 'https://script.google.com/macros/s/AKfycbypsF0p2SOs-gu2OoB69Z_pnJEUWCVt3EkOB2EVnBegU-7U1aZSVsD9oeRV1vZ1G448/exec';
+
+function handleSubmit(){
+  var name=document.getElementById('voterName').value.trim();
+  if(!name){alert('请填写姓名！');return;}
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='⏳ 提交中...';
+
+  var scores=[];var m=[0,0,0];
+  Q.forEach(function(q){
+    var checked=document.getElementById(q[0]).checked;
+    var score=checked?q[5]:0;
+    scores.push(score);
+    m[q[1]-1]+=score;
+  });
+  var total=m[0]+m[1]+m[2];
+  var grade,gc;
+  if(total>=270){grade='优秀 - 强作战班组';gc='g-s';}
+  else if(total>=240){grade='良好 - 稳定高效';gc='g-a';}
+  else if(total>=210){grade='合格 - 基础达标';gc='g-b';}
+  else if(total>=180){grade='待提升 - 存在明显短板';gc='g-c';}
+  else{grade='不合格 - 重点整改';gc='g-d';}
+
+  var data={voter:name,scores:scores,mod1Total:m[0],mod2Total:m[1],mod3Total:m[2],grandTotal:total,grade:grade,comments:document.getElementById('comments').value.trim()};
+
+  fetch(API_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+  .then(function(){showSuccess(total,grade,gc);})
+  .catch(function(e){alert('提交失败，请检查网络后重试');btn.disabled=false;btn.textContent='📤 提交评估';});
+}
+
+function showSuccess(total,grade,gc){
+  document.getElementById('finalScore').textContent=total+' / 300';
+  var ge=document.getElementById('finalGrade');
+  ge.textContent=grade;ge.className='grade '+gc;
+  document.getElementById('overlay').className='overlay show';
+}
+
+buildForm();
+</script>
+</body>
+</html>
