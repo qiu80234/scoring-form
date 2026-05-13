@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>班长的战争 - 300分评估表</title>
+<title>班长的战争 Perang Mandor - 300分评估表 Formulir Evaluasi</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -27,6 +27,9 @@ body{font-family:'Noto Sans SC',sans-serif;background:#f0f2f5;color:#1a1a2e;line
 .card .info{flex:1;min-width:0}
 .card .title{font-size:.88rem;font-weight:500;color:#1a1a2e}
 .card .detail{font-size:.75rem;color:#777;margin-top:2px}
+.card .title-id{font-size:.72rem;color:#999;font-style:italic;margin-top:1px;font-weight:400}
+.card .detail-id{font-size:.68rem;color:#aaa;font-style:italic}
+.sub-label .sub-id{font-size:.76rem;color:#888;font-style:italic;font-weight:400;margin-left:4px}
 .card .pts{font-size:.82rem;font-weight:700;color:#2d6a4f;background:#e8f5e9;padding:4px 10px;border-radius:16px;white-space:nowrap;flex-shrink:0}
 .card.checked{background:#f0fdf4;border-color:#40916c}
 .info-sec select{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fafafa;color:#1a1a2e;appearance:auto}
@@ -46,6 +49,8 @@ body{font-family:'Noto Sans SC',sans-serif;background:#f0f2f5;color:#1a1a2e;line
 .submit-btn:active{transform:scale(.98)}
 .submit-btn:disabled{opacity:.5;cursor:not-allowed}
 .note{text-align:center;font-size:.75rem;color:#999;margin-top:8px;padding-bottom:20px}
+.id-sub{display:block;font-size:0.78em;color:rgba(255,255,255,0.65);font-weight:400;font-style:italic;line-height:1.3;margin-top:2px}
+.dark-sub{color:#999}
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;align-items:center;justify-content:center;padding:20px}
 .overlay.show{display:flex}
 .scard{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;max-width:360px;width:100%;animation:pop .3s ease}
@@ -63,17 +68,17 @@ body{font-family:'Noto Sans SC',sans-serif;background:#f0f2f5;color:#1a1a2e;line
 <body>
 <div class="wrap">
 <div class="header">
-<h1>🌾 第二农业季度<br>"班长的战争" 评估表</h1>
-<div class="sub">300分总打分表（建议版）</div>
-<div class="desc">请勾选您认为该班组达标的项目<br>✅ 勾选 = 给满分 ｜ ⬜ 不勾选 = 0分</div>
+<h1>🌾 第二农业季度<br>"班长的战争" 评估表<span class="id-sub">Kuartal Pertanian Kedua · Formulir Evaluasi "Perang Mandor"</span></h1>
+<div class="sub">300分总打分表 Tabel Penilaian 300 Poin（建议版）</div>
+<div class="desc">请勾选您认为该班组达标的项目<br><em style="opacity:0.7">Centang item yang menurut Anda memenuhi standar</em><br>✅ 勾选 = 给满分 ｜ ⬜ 不勾选 = 0分</div>
 </div>
 
 <div class="info-sec">
-<h3>👤 基本信息</h3>
-<div class="field"><div class="field-label">您的姓名 *</div><input type="text" id="voterName" placeholder="请输入姓名" required></div>
-<div class="field"><div class="field-label">被评估班组 *</div>
+<h3>👤 基本信息 <span class="dark-sub" style="font-style:italic;font-size:0.85em">Informasi Dasar</span></h3>
+<div class="field"><div class="field-label">您的姓名 <em style="color:#999;font-size:0.9em">Nama Anda</em> *</div><input type="text" id="voterName" placeholder="请输入姓名 / Masukkan nama" required></div>
+<div class="field"><div class="field-label">被评估班组 <em style="color:#999;font-size:0.9em">Regu yang Dinilai</em> *</div>
 <select id="targetTeam" required>
-<option value="" disabled selected>请选择被评估的班组</option>
+<option value="" disabled selected>请选择被评估的班组 / Pilih regu yang dinilai</option>
 <option value="Victor 维克多">Victor 维克多</option>
 <option value="张贵子 Zhang Guizi">张贵子 Zhang Guizi</option>
 <option value="Budi 布迪">Budi 布迪</option>
@@ -85,30 +90,30 @@ body{font-family:'Noto Sans SC',sans-serif;background:#f0f2f5;color:#1a1a2e;line
 <div id="formBody"></div>
 
 <div class="info-sec">
-<h3>💬 补充意见（选填）</h3>
-<textarea id="comments" rows="3" placeholder="请输入您的意见或建议..."></textarea>
+<h3>💬 补充意见 <span class="dark-sub" style="font-style:italic;font-size:0.85em">Komentar Tambahan</span>（选填）</h3>
+<textarea id="comments" rows="3" placeholder="请输入您的意见或建议 / Masukkan saran Anda..."></textarea>
 </div>
 
 <div class="preview">
-<h3>📊 实时得分</h3>
-<div class="prow"><span>🌱 农业目标</span><span id="m1">0 / 100</span></div>
-<div class="prow"><span>👥 团队建设</span><span id="m2">0 / 100</span></div>
-<div class="prow"><span>🚀 技术突破</span><span id="m3">0 / 100</span></div>
-<div class="ptotal"><span>总分：<span id="gt">0</span> / 300</span></div>
+<h3>📊 实时得分 <span style="font-size:0.85em;color:#999;font-style:italic">Skor Real-time</span></h3>
+<div class="prow"><span>🌱 农业目标 <em style="color:#999;font-size:0.85em">Target Pertanian</em></span><span id="m1">0 / 100</span></div>
+<div class="prow"><span>👥 团队建设 <em style="color:#999;font-size:0.85em">Pembangunan Tim</em></span><span id="m2">0 / 100</span></div>
+<div class="prow"><span>🚀 技术突破 <em style="color:#999;font-size:0.85em">Terobosan Teknologi</em></span><span id="m3">0 / 100</span></div>
+<div class="ptotal"><span>总分 Total：<span id="gt">0</span> / 300</span></div>
 </div>
 
-<button class="submit-btn" id="submitBtn" onclick="handleSubmit()">📤 提交评估</button>
-<p class="note">提交后数据将保存至 Google 表格，不可修改</p>
+<button class="submit-btn" id="submitBtn" onclick="handleSubmit()">📤 提交评估 Kirim Evaluasi</button>
+<p class="note">提交后数据将保存至 Google 表格，不可修改<br><em>Setelah dikirim, data akan disimpan dan tidak dapat diubah</em></p>
 </div>
 
 <div class="overlay" id="overlay">
 <div class="scard">
 <div class="icon">✅</div>
-<h2>提交成功！</h2>
-<p>感谢您的评估，结果已保存至表格。</p>
+<h2>提交成功！Berhasil Terkirim!</h2>
+<p>感谢您的评估，结果已保存至表格。<br><em style="color:#999">Terima kasih, hasil telah disimpan.</em></p>
 <div class="score" id="finalScore"></div>
 <div class="grade" id="finalGrade"></div>
-<br><button class="close-btn" onclick="location.reload()">关闭</button>
+<br><button class="close-btn" onclick="location.reload()">关闭 Tutup</button>
 </div>
 </div>
 
@@ -158,11 +163,13 @@ var Q=[
 ["q41",3,"AI与智能化","AI预警","提前发现问题",5]
 ];
 
-var modNames={1:"农业目标",2:"团队建设",3:"技术突破"};
+var modNames={1:"农业目标 Target Pertanian",2:"团队建设 Pembangunan Tim",3:"技术突破 Terobosan Teknologi"};
 var modClass={1:"s1",2:"s2",3:"s3"};
 var modIcons={1:"🌱",2:"👥",3:"🚀"};
-var modDescs={1:'"地有没有管好，树是不是健康，果是不是收回来。"',2:'"有没有形成真正能持续作战的组织。"',3:'"农业是否开始升级。"'};
+var modDescs={1:'"地有没有管好，树是不是健康，果是不是收回来。"<br><em style="opacity:0.7">"Apakah lahan dikelola, pohon sehat, buah dipanen?"</em>',2:'"有没有形成真正能持续作战的组织。"<br><em style="opacity:0.7">"Apakah terbentuk organisasi siap tempur?"</em>',3:'"农业是否开始升级。"<br><em style="opacity:0.7">"Apakah pertanian mulai berkembang?"</em>'};
 var subIcons={"土地管理":"📍","树健康":"🌳","果与采收":"🍊","组织架构":"🏗️","人员梯度":"📈","出勤与纪律":"📋","班组作战能力":"⚔️","技术突破案例":"💡","机械化":"⚙️","大数据建设":"📊","AI与智能化":"🤖"};
+var subID={"土地管理":"Pengelolaan Lahan","树健康":"Kesehatan Pohon","果与采收":"Buah & Panen","组织架构":"Struktur Organisasi","人员梯度":"Pengembangan SDM","出勤与纪律":"Kehadiran & Disiplin","班组作战能力":"Kemampuan Tempur Tim","技术突破案例":"Terobosan Teknis","机械化":"Mekanisasi","大数据建设":"Big Data","AI与智能化":"AI & Kecerdasan"};
+var QID={q1:["Jalan & Drainase","Akses musim hujan, drainase lancar"],q2:["Kebersihan Lahan","Pengelolaan gulma & semak"],q3:["Tanah-Pupuk-Air","Tanah, pemupukan, irigasi"],q4:["Cakupan Inspeksi","Turun ke lapangan"],q5:["Kondisi Daun","Warna, bercak, pertumbuhan"],q6:["Vigor Pohon","Pertumbuhan & tajuk"],q7:["Pengendalian Hama","Pencegahan & pemantauan"],q8:["Pemulihan Pohon Lemah","Pengelolaan pohon lemah"],q9:["Panen Buah Matang","Panen tepat waktu"],q10:["Buah Jatuh","Buah jatuh berkepanjangan"],q11:["Kirim ke Pabrik","Cepat masuk pabrik"],q12:["Panen Puncak","Organisasi musim puncak"],q13:["Sistem Cadangan AB","Mekanisme pengganti"],q14:["Sistem 3 Tim","Sinergi manual/mekanis/AI"],q15:["Kaderisasi Mandor","Pembinaan kader"],q16:["Pelatihan Baru","Adaptasi & pendampingan"],q17:["Retensi Karyawan","Pengendalian turnover"],q18:["Transfer Pengetahuan","Replikasi pengalaman"],q19:["Tingkat Kehadiran","Kehadiran harian & puncak"],q20:["Kehadiran Puncak","Absen saat kritis"],q21:["Disiplin Lapangan","Manajemen & standar"],q22:["Keselamatan Kerja","Kesadaran & pelanggaran"],q23:["Kemampuan Puncak","Organisasi puncak"],q24:["Operasi Musim Hujan","Kontinuitas operasi"],q25:["Kecepatan Respons","Respons cepat"],q26:["Koordinasi Antar-Tim","Saling mendukung"],q27:["Metode Baru","Inovasi cara tanam"],q28:["Penurunan Biaya","Efisiensi biaya"],q29:["Peningkatan Produksi","Terobosan produktivitas"],q30:["Pemulihan Area","Perbaikan & peningkatan"],q31:["Cakupan Mekanisasi","Tingkat penggunaan"],q32:["Pengukuran Otomatis","Panen digital"],q33:["Efisiensi Transportasi","Efisiensi perputaran"],q34:["Penurunan Kerusakan","Stabilitas peralatan"],q35:["Unggah Data","Data real-time"],q36:["Kelengkapan Data","Pencatatan berkelanjutan"],q37:["Analisis Pertanian","Aplikasi analisis data"],q38:["Keakuratan Data","Dapat diandalkan"],q39:["Inspeksi AI","Implementasi AI"],q40:["Aplikasi Drone","Inspeksi & pemantauan"],q41:["Peringatan Dini AI","Deteksi masalah awal"]};
 
 function buildForm(){
   var body=document.getElementById('formBody');
@@ -172,18 +179,19 @@ function buildForm(){
       if(curMod)html+='</div>';
       curMod=q[1];curSub='';
       html+='<div class="section"><div class="sec-head '+modClass[curMod]+'">'+modIcons[curMod]+' '+
-        (curMod===1?'一':curMod===2?'二':'三')+'、'+modNames[curMod]+'（100分）'+
-        '<div class="sec-desc">核心：'+modDescs[curMod]+'</div></div>';
+        (curMod===1?'一':curMod===2?'二':'三')+'、'+modNames[curMod]+'（100分 Poin）'+
+        '<div class="sec-desc">核心 Inti：'+modDescs[curMod]+'</div></div>';
     }
     if(q[2]!==curSub){
       curSub=q[2];
       var subTotal=Q.filter(function(x){return x[2]===curSub}).reduce(function(a,b){return a+b[5]},0);
-      html+='<div class="sub-label">'+(subIcons[curSub]||'')+ ' '+curSub+'（'+subTotal+'分）</div>';
+      html+='<div class="sub-label">'+(subIcons[curSub]||'')+' '+curSub+(subID[curSub]?' <span class="sub-id">'+subID[curSub]+'</span>':'')+'（'+subTotal+'分 Poin）</div>';
     }
     num++;
+    var t=QID[q[0]];
     html+='<div class="card" id="card_'+q[0]+'"><label>'+
       '<input type="checkbox" id="'+q[0]+'" onchange="onCheck(this)">'+
-      '<div class="info"><div class="title">'+num+'. '+q[3]+'</div><div class="detail">'+q[4]+'</div></div>'+
+      '<div class="info"><div class="title">'+num+'. '+q[3]+'</div>'+(t?'<div class="title-id">'+t[0]+'</div>':'')+'<div class="detail">'+q[4]+'</div>'+(t?'<div class="detail-id">'+t[1]+'</div>':'')+'</div>'+
       '<div class="pts">'+q[5]+'分</div></label></div>';
   });
   html+='</div>';
@@ -216,7 +224,7 @@ function handleSubmit(){
   if(!name){alert('请填写姓名！');return;}
   if(!team){alert('请选择被评估班组！');return;}
   var btn=document.getElementById('submitBtn');
-  btn.disabled=true;btn.textContent='⏳ 提交中...';
+  btn.disabled=true;btn.textContent='⏳ 提交中 Mengirim...';
 
   var scores=[];var m=[0,0,0];
   Q.forEach(function(q){
@@ -227,17 +235,17 @@ function handleSubmit(){
   });
   var total=m[0]+m[1]+m[2];
   var grade,gc;
-  if(total>=270){grade='优秀 - 强作战班组';gc='g-s';}
-  else if(total>=240){grade='良好 - 稳定高效';gc='g-a';}
-  else if(total>=210){grade='合格 - 基础达标';gc='g-b';}
-  else if(total>=180){grade='待提升 - 存在明显短板';gc='g-c';}
-  else{grade='不合格 - 重点整改';gc='g-d';}
+  if(total>=270){grade='优秀 Sangat Baik - 强作战班组';gc='g-s';}
+  else if(total>=240){grade='良好 Baik - 稳定高效';gc='g-a';}
+  else if(total>=210){grade='合格 Cukup - 基础达标';gc='g-b';}
+  else if(total>=180){grade='待提升 Perlu Ditingkatkan';gc='g-c';}
+  else{grade='不合格 Tidak Memenuhi';gc='g-d';}
 
   var data={voter:name,team:team,scores:scores,mod1Total:m[0],mod2Total:m[1],mod3Total:m[2],grandTotal:total,grade:grade,comments:document.getElementById('comments').value.trim()};
 
   fetch(API_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
   .then(function(){showSuccess(total,grade,gc);})
-  .catch(function(e){alert('提交失败，请检查网络后重试');btn.disabled=false;btn.textContent='📤 提交评估';});
+  .catch(function(e){alert('提交失败，请检查网络后重试 / Gagal mengirim, cek jaringan');btn.disabled=false;btn.textContent='📤 提交评估 Kirim Evaluasi';});
 }
 
 function showSuccess(total,grade,gc){
